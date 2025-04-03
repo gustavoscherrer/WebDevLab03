@@ -7,8 +7,8 @@ st.title("Web Development Lab03")
 # TODO: Fill out your team number, section, and team members
 
 st.header("CS 1301")
-st.subheader("Team XX, Web Development - Section X")
-st.subheader("Team Member 1, Team Member 2")
+st.subheader("Team 52, Web Development - Section A")
+st.subheader("Gustavo F. Scherrer, Gracelynn Xia")
 
 
 # Introduction
