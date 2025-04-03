@@ -23,15 +23,18 @@ if "district" not in st.session_state:
 if "alive" not in st.session_state:
     st.session_state["alive"] = "All"
 
-districtFilter = st.selectbox("Choose a District", sorted(spreadsheet["District"].unique()), key="district")
-aliveFilter = st.radio("Alive after Mockingjay?", ["All", "Yes", "No"], key="alive")
+with st.container(border = True):
+    st.markdown("### 🔍 Filter Options")
 
-filteredSpreadsheet = spreadsheet[spreadsheet["District"] == st.session_state["district"]]
+    districtFilter = st.selectbox("Choose a District", sorted(spreadsheet["District"].unique()), key="district")
+    aliveFilter = st.radio("Alive after Mockingjay?", ["All", "Yes", "No"], key="alive")
 
-if st.session_state["alive"] == "Yes":
-    filteredSpreadsheet = filteredSpreadsheet[filteredSpreadsheet["Alive"] == True]
-elif st.session_state["alive"] == "No":
-    filteredSpreadsheet = filteredSpreadsheet[filteredSpreadsheet["Alive"] == False]
+    filteredSpreadsheet = spreadsheet[spreadsheet["District"] == st.session_state["district"]]
+
+    if st.session_state["alive"] == "Yes":
+        filteredSpreadsheet = filteredSpreadsheet[filteredSpreadsheet["Alive"] == True]
+    elif st.session_state["alive"] == "No":
+        filteredSpreadsheet = filteredSpreadsheet[filteredSpreadsheet["Alive"] == False]
 
 st.subheader(f"Victors from District {st.session_state['district']}")
 st.dataframe(filteredSpreadsheet)
