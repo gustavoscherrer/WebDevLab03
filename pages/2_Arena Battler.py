@@ -8,6 +8,10 @@ response = requests.get(baseUrl)
 data = response.json()
 victorsDict = data["victors"]
 
+key = st.secrets["key"]
+genai.configure(api_key=key)
+model = genai.GenerativeModel("gemini-1.5-flash")
+
 names = [f"{v['first_name']} {v['last_name']}" for v in victorsDict.values()]
 
 tribute1 = st.selectbox("Choose Tribute 1", names)
@@ -29,14 +33,7 @@ battle_prompt = (
     "Who would win and why? Describe the battle in detail."
 )
 
-key = st.secrets["key"]
-genai.configure(api_key=key)
-model = genai.GenerativeModel("gemini-1.5-flash")
-
-try:
-    if st.button("Simulate Battle"):
-        with st.spinner("Fighting in the arena... 🔥"):
-            response = model.generate_content(battle_prompt)
-            st.markdown(response.text)
-except:
-    print ("Sorry. Error")
+if st.button("Simulate Battle"):
+    with st.spinner("Fighting in the arena... 🔥"):
+        response = model.generate_content(battle_prompt)
+        st.markdown(response.text)
