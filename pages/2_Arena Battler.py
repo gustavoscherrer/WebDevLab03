@@ -39,8 +39,7 @@ try:
         with st.spinner("Fighting in the arena... 🔥"):
             response = model.generate_content(battle_prompt)
             st.markdown(response.text)
-
-except:
-    st.error("En error ocurred")
+except Exception as e:
+    st.error(f"En error ocurred: {e}")
     
 
