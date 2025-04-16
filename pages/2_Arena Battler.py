@@ -33,7 +33,10 @@ key = st.secrets["key"]
 genai.configure(api_key=key)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-if st.button("Simulate Battle"):
-    with st.spinner("Fighting in the arena... 🔥"):
-        response = model.generate_content(battle_prompt)
-        st.markdown(response.text)
+try:
+    if st.button("Simulate Battle"):
+        with st.spinner("Fighting in the arena... 🔥"):
+            response = model.generate_content(battle_prompt)
+            st.markdown(response.text)
+except:
+    print ("Sorry. Error")
