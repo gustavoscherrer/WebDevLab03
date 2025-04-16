@@ -4,6 +4,7 @@ import requests
 import google.generativeai as genai
 
 try:
+    st.title("Hunger Games")
     baseUrl = "https://raw.githubusercontent.com/cellehcim/tales-api/main/data.json"
     response = requests.get(baseUrl)
     data = response.json()
