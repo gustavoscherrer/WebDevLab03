@@ -41,6 +41,6 @@ try:
             st.markdown(response.text)
 
 except:
-    print("En error ocurred")
+    st.error("En error ocurred")
     
 
