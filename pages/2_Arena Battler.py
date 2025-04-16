@@ -38,6 +38,7 @@ try:
     if st.button("Simulate Battle"):
         with st.spinner("Fighting in the arena... 🔥"):
             response = model.generate_content(battle_prompt)
+            st.write(str(respone.text))
             st.markdown(response.text)
 except Exception as e:
     st.error(f"En error ocurred: {e}")
